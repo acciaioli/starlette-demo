@@ -1,9 +1,10 @@
 from typing import List
 
-from starlette.routing import Route
+from starlette.routing import Route, WebSocketRoute
 
-from .endpoints import homepage
+from .endpoints import api, Ws
 
 routes: List[Route] = [
-    Route('/', endpoint=homepage, methods=['GET']),
+    Route('/api', endpoint=api, methods=['GET']),
+    WebSocketRoute('/ws', endpoint=Ws),
 ]
