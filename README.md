@@ -51,6 +51,13 @@ $ flake8 app
 $ mypy app
 ```
 
+### Run Tests
+```bash
+$ pytest
+
+$ pytest -s # ipdb compatible
+```
+
 ### Run Server
 
 ```bash

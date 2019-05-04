@@ -3,4 +3,4 @@ from starlette.responses import JSONResponse
 
 
 async def homepage(request: Request) -> JSONResponse:
-    return JSONResponse({'hello': 'wolf'})
+    return JSONResponse({'hello': 'asgi'})
