@@ -1,5 +1,8 @@
-# wolf backend
+# backend
 
+[![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/)
+[![Build Status](https://travis-ci.com/Spin14/wolf-backend.svg?branch=master)](https://travis-ci.com/Spin14/wolf-backend)
+[![codecov](https://codecov.io/gh/Spin14/wolf-backend/branch/master/graph/badge.svg)](https://codecov.io/gh/Spin14/wolf-backend)
 
 ## Development
 
