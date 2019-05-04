@@ -12,6 +12,7 @@ uvicorn = "^0.7.1"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.701.0"
+flake8 = "^3.7"
 
 [build-system]
 requires = ["poetry>=0.12"]

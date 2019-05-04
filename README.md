@@ -41,6 +41,11 @@ $ poetry install
 $ ln -s .env.dev .env
 ```
 
+### Lint Checks
+```bash
+$ flake8 app
+```
+
 ### Type Checks
 ```bash
 $ mypy app
