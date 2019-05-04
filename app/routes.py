@@ -1,7 +1,9 @@
+from typing import List
+
 from starlette.routing import Route
 
 from .endpoints import homepage
 
-routes = [
+routes: List[Route] = [
     Route('/', endpoint=homepage, methods=['GET']),
 ]

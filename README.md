@@ -41,6 +41,11 @@ $ poetry install
 $ ln -s .env.dev .env
 ```
 
+### Type Checks
+```bash
+$ mypy app
+```
+
 ### Run Server
 
 ```bash
