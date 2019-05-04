@@ -8,13 +8,14 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.7"
 starlette = "^0.11.4"
-uvicorn = "^0.7.1"
+uvicorn = "^0.7.1"  # dev.sh
+aiofiles = "^0.4.0" # starlette.staticfiles.StaticFiles
 
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.701.0"
 flake8 = "^3.7"
-requests = "^2.21"
+requests = "^2.21" # starlette.testclient.TestClient
 ipdb = "^0.12.0"
 pytest-cov = "^2.7"
 

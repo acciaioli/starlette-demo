@@ -25,3 +25,10 @@ def test_404_handler():
     assert response.status_code == 404
     assert response.headers['content-type'] == 'application/json'
     assert response.json() == {'detail': 'not found'}
+
+
+def test_static():
+    response = client.get('/static/asgi.html')
+    assert response.status_code == 200
+    assert response.headers['content-type'] == 'text/html; charset=utf-8'
+    assert response.content == b'<a href="https://asgi.readthedocs.io/en/latest/">ASGI docs</a>\n'
