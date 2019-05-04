@@ -1,3 +1,5 @@
+from unittest.mock import MagicMock, patch, call
+
 from starlette.testclient import TestClient
 
 from app import app
@@ -32,3 +34,15 @@ def test_static():
     assert response.status_code == 200
     assert response.headers['content-type'] == 'text/html; charset=utf-8'
     assert response.content == b'<a href="https://asgi.readthedocs.io/en/latest/">ASGI docs</a>\n'
+
+
+@patch('app.endpoints.do')
+def test_tasks(do: MagicMock):
+    keys = ['a', 'b', 'c']
+    response = client.post('/tasks', json=keys)
+    assert response.status_code == 200
+    assert response.headers['content-type'] == 'application/json'
+    assert response.json() == {'will do': '3 tasks'}
+
+    expected_calls = [call(param='a'), call(param='b'), call(param='c')]
+    do.assert_has_calls(expected_calls, any_order=True)
