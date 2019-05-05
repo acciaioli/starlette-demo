@@ -7,6 +7,8 @@ from starlette.websockets import WebSocket
 from starlette.background import BackgroundTasks
 
 from .tasks import do
+from .db import database
+from .models import protocols
 
 
 async def api(request: Request) -> JSONResponse:
@@ -26,10 +28,36 @@ class Ws:
         await websocket.close()
 
 
-async def tasks(request):
+async def tasks(request: Request) -> JSONResponse:
     data: List[str] = await request.json()
     b_tasks = BackgroundTasks()
     for key in data:
         b_tasks.add_task(do, param=key)
 
     return JSONResponse({'will do': f'{len(data)} tasks'}, background=b_tasks)
+
+
+async def list_protocols(request: Request) -> JSONResponse:
+    query = protocols.select()
+    results = await database.fetch_all(query)
+    content = [
+        {
+            'id': result['id'],
+            'name': result['name']
+        }
+        for result in results
+    ]
+
+    return JSONResponse(content)
+
+
+async def create_protocol(request: Request) -> JSONResponse:
+    data = await request.json()
+    query = protocols.insert().values(
+       name=data['name']
+    )
+    await database.execute(query)
+
+    return JSONResponse({
+        'name': data['name']
+    })
