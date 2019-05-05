@@ -1,8 +1,9 @@
+# Flake8: noqa: F811
 from unittest.mock import MagicMock, patch, call
 
 from starlette.testclient import TestClient
 
-from .fixtures import client, create_test_database
+from .fixtures import client, create_test_database  # noqa: F401
 
 
 def test_api(client: TestClient) -> None:

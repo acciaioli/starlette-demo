@@ -46,12 +46,12 @@ $ ln -s .env.dev .env
 
 ### Lint Checks
 ```bash
-$ flake8 app
+$ flake8 app tests
 ```
 
 ### Type Checks
 ```bash
-$ mypy app
+$ mypy app tests
 ```
 
 ### Run Tests

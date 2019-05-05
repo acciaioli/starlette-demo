@@ -10,8 +10,8 @@ from sqlalchemy_utils import database_exists, create_database, drop_database
 
 environ['TESTING'] = 'True'
 
-from app.db import db_url, metadata
-from app import app
+from app.db import db_url, metadata  # noqa: E402
+from app import app  # noqa: E402
 
 
 @pytest.fixture(scope='session', autouse=True)
