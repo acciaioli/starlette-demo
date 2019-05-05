@@ -14,6 +14,8 @@ install:
 script:
     - poetry run flake8 app tests
     - poetry run mypy app tests
+    - poetry run xenon app -b A
+    - poetry run xenon tests -b A
     - poetry run pytest
 
 after_script:

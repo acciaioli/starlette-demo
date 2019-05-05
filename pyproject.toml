@@ -7,21 +7,22 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-starlette = "^0.11.4"
-uvicorn = "^0.7.1"      # dev.sh
+starlette = "^0.11.4"   # asgi framework
+uvicorn = "^0.7.1"      # asgi server (dev.sh)
 aiofiles = "^0.4.0"     # starlette.staticfiles.StaticFiles
-sqlalchemy = "^1.3"     # db (orm)
-alembic = "^1.0"        # db migrations
+sqlalchemy = "^1.3"     # db abstraction
+alembic = "^1.0"        # sqlalchemy migrations
 databases = "^0.2.2"    # db async integration
 aiosqlite = "^0.10.0"   # databases dependency (sqlite)
 
 
 [tool.poetry.dev-dependencies]
-mypy = "^0.701.0"
-flake8 = "^3.7"
+mypy = "^0.701.0"               # type checks
+flake8 = "^3.7"                 # style checks
+xenon = "^0.5.5"                # cyclomatic complexity checks
 requests = "^2.21"              # starlette.testclient.TestClient
-ipdb = "^0.12.0"
-pytest-cov = "^2.7"
+ipdb = "^0.12.0"                # debugger
+pytest-cov = "^2.7"             # test runner
 sqlalchemy_utils = "^0.33.11"   # used for test utils
 
 [build-system]

@@ -45,13 +45,25 @@ $ ln -s .env.dev .env
 ```
 
 ### Lint Checks
+
 ```bash
 $ flake8 app tests
 ```
 
 ### Type Checks
+
 ```bash
 $ mypy app tests
+```
+
+### Cyclomatic Complexity
+
+```bash
+$ radon cc app -n B -s
+$ radon cc tests -n B -s
+
+$ xenon app -b A # this one is for CI
+$ xenon tests -b A # this one is for CI
 ```
 
 ### Run Tests
