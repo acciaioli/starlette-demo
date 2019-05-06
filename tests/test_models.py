@@ -10,22 +10,18 @@ def test_protocols(conn: Connection) -> None:
     assert rows.fetchall() == []
 
     s = protocols.insert()
-    conn.execute(s, [
-        {'name': 'wsgi'},
-        {'name': 'asgi'},
-    ])
+    conn.execute(s, [{"name": "wsgi"}, {"name": "asgi"}])
 
     s = select([protocols.c.name])
     rows = conn.execute(s)
-    assert rows.fetchall() == [('wsgi',), ('asgi',)]
+    assert rows.fetchall() == [("wsgi",), ("asgi",)]
 
-    s = protocols.update().\
-        where(protocols.c.name == 'wsgi').values(name='past')
+    s = protocols.update().where(protocols.c.name == "wsgi").values(name="past")
     conn.execute(s)
 
     s = select([protocols.c.name])
     rows = conn.execute(s)
-    assert rows.fetchall() == [('past',), ('asgi',)]
+    assert rows.fetchall() == [("past",), ("asgi",)]
 
     s = protocols.delete()
     conn.execute(s)

@@ -12,19 +12,19 @@ from .models import protocols
 
 
 async def api(request: Request) -> JSONResponse:
-    return JSONResponse({'hello': 'asgi'})
+    return JSONResponse({"hello": "asgi"})
 
 
 class Ws:
     def __init__(self, scope: Scope) -> None:
-        assert scope['type'] == 'websocket'
+        assert scope["type"] == "websocket"
         self.scope = scope
 
     async def __call__(self, receive: Receive, send: Send) -> None:
         websocket = WebSocket(self.scope, receive=receive, send=send)
         await websocket.accept()
-        await websocket.send_json({'hello': 'asgi'})
-        await websocket.send_json({'goodbye': 'asgi'})
+        await websocket.send_json({"hello": "asgi"})
+        await websocket.send_json({"goodbye": "asgi"})
         await websocket.close()
 
 
@@ -34,30 +34,20 @@ async def tasks(request: Request) -> JSONResponse:
     for key in data:
         b_tasks.add_task(do, param=key)
 
-    return JSONResponse({'will do': f'{len(data)} tasks'}, background=b_tasks)
+    return JSONResponse({"will do": f"{len(data)} tasks"}, background=b_tasks)
 
 
 async def list_protocols(request: Request) -> JSONResponse:
     query = protocols.select()
     results = await database.fetch_all(query)
-    content = [
-        {
-            'id': result['id'],
-            'name': result['name']
-        }
-        for result in results
-    ]
+    content = [{"id": result["id"], "name": result["name"]} for result in results]
 
     return JSONResponse(content)
 
 
 async def create_protocol(request: Request) -> JSONResponse:
     data = await request.json()
-    query = protocols.insert().values(
-       name=data['name']
-    )
+    query = protocols.insert().values(name=data["name"])
     await database.execute(query)
 
-    return JSONResponse({
-        'name': data['name']
-    })
+    return JSONResponse({"name": data["name"]})
