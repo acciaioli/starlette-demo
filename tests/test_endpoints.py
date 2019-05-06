@@ -1,5 +1,5 @@
 # Flake8: noqa: F811
-from unittest.mock import MagicMock, patch, call
+from unittest.mock import MagicMock, call, patch
 
 from starlette.testclient import TestClient
 

@@ -1,8 +1,7 @@
-import sqlalchemy
 import databases
+import sqlalchemy
 
-from .config import TESTING, DATABASE_URL, TEST_DATABASE_URL
-
+from .config import DATABASE_URL, TEST_DATABASE_URL, TESTING
 
 metadata = sqlalchemy.MetaData()
 

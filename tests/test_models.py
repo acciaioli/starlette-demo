@@ -1,5 +1,5 @@
-from sqlalchemy.sql import select
 from sqlalchemy.engine.base import Connection
+from sqlalchemy.sql import select
 
 from app.models import protocols
 

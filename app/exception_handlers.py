@@ -1,6 +1,6 @@
+from starlette.exceptions import HTTPException
 from starlette.requests import Request
 from starlette.responses import JSONResponse
-from starlette.exceptions import HTTPException
 
 
 async def not_found(request: Request, exc: HTTPException) -> JSONResponse:
