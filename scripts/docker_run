@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# todo: namespace / name as variables
+docker run -d --name asgi_app -p 80:8000 groovies/asgi

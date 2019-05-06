@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export PREFIX=""
+if [ -d 'venv' ] ; then
+    export PREFIX="venv/bin/"
+fi
+
+${PREFIX}uvicorn app:app --host 0.0.0.0 --port 8000 --reload

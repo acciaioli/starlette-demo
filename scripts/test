@@ -1,0 +1,14 @@
+#!/bin/bash
+
+export PREFIX=""
+if [ -d 'venv' ] ; then
+    export PREFIX="venv/bin/"
+fi
+
+${PREFIX}isort -rc app tests --check-only
+${PREFIX}black app tests --check
+${PREFIX}flake8 app tests
+${PREFIX}mypy app tests
+${PREFIX}xenon app -b A
+${PREFIX}xenon tests -b A
+${PREFIX}pytest

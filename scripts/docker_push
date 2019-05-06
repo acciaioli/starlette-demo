@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# todo: namespace / name as variables
+# todo: docker login
+docker push groovies/asgi
