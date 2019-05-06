@@ -2,13 +2,17 @@ from typing import List
 
 from starlette.background import BackgroundTasks
 from starlette.requests import Request
-from starlette.responses import JSONResponse
+from starlette.responses import JSONResponse, RedirectResponse
 from starlette.types import Receive, Scope, Send
 from starlette.websockets import WebSocket
 
 from .db import database
 from .models import protocols
 from .tasks import do
+
+
+async def root(request: Request) -> RedirectResponse:
+    return RedirectResponse(url="/api")
 
 
 async def api(request: Request) -> JSONResponse:

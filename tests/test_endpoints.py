@@ -1,7 +1,21 @@
 # Flake8: noqa: F811
 from unittest.mock import MagicMock, call, patch
 
+from requests.models import Response
 from starlette.testclient import TestClient
+
+
+def assert_redirected(response: Response) -> None:
+    assert len(response.history) == 1
+    assert response.history[0].status_code == 302
+
+
+def test_root(client: TestClient) -> None:
+    response = client.get("/")
+    assert_redirected(response)
+    assert response.status_code == 200
+    assert response.headers["content-type"] == "application/json"
+    assert response.json() == {"hello": "asgi"}
 
 
 def test_api(client: TestClient) -> None:
