@@ -5,6 +5,32 @@
 [![codecov](https://codecov.io/gh/Spin14/wolf-backend/branch/master/graph/badge.svg)](https://codecov.io/gh/Spin14/wolf-backend)
 [![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 
+## Intro
+
+This is a `asgi - starlette` demo project. 
+
+What's [_asgi_](https://asgi.readthedocs.io/en/latest/index.html)? In short, the successor to [_wsgi_](https://docs.python.org/3.7/library/wsgiref.html)!
+
+It features:
+
+- `starlette` [asgi framework](https://github.com/encode/starlette)
+- `uvicorn` [asgi server](https://github.com/encode/uvicorn)
+- `gunicorn` [http server](https://github.com/benoitc/gunicorn)
+- `poetry` [dependency manager](https://github.com/sdispater/poetry)
+- `databases` [async db support](https://github.com/encode/databases)
+- `sqlalchemy` [sql toolkit](https://github.com/sqlalchemy/sqlalchemy)
+- `black` [code formatter](https://github.com/python/black)
+- `flake8` [style checker](https://github.com/PyCQA/flake8)
+- `mypy` [static type checker](https://github.com/python/mypy)
+- `xenon` [cyclomatic complexity checker](https://github.com/rubik/xenon)
+- `pytest` [test framework](https://github.com/pytest-dev/pytest)
+ 
+ and:
+ 
+ - a `Dockerfile` for [simple deployment](https://docs.docker.com/engine/reference/builder/)
+ - a `travis` config for [continuous integration](https://travis-ci.org/getting_started)
+
+
 ## Development
 
 ### Setup Poetry
@@ -120,9 +146,10 @@ $ firefox htmlcov/index.html
 
 ```
 
-### Run Server
+### Run Dev Server
 
 ```bash
 # run asgi server with auto load
 $ ./dev.sh
 ```
+
