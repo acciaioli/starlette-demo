@@ -3,8 +3,6 @@ from unittest.mock import MagicMock, patch, call
 
 from starlette.testclient import TestClient
 
-from .fixtures import client, create_test_database  # noqa: F401
-
 
 def test_api(client: TestClient) -> None:
     response = client.get('/api')
@@ -47,21 +45,21 @@ def test_tasks(do: MagicMock, client: TestClient) -> None:
     do.assert_has_calls(expected_calls, any_order=True)
 
 
-def test_list_protocols(client: TestClient, create_test_database: None) -> None:
+def test_list_protocols(client: TestClient) -> None:
     response = client.get('/protocols')
     assert response.status_code == 200
     assert response.headers['content-type'] == 'application/json'
     assert response.json() == []
 
 
-def test_create_protocols(client: TestClient, create_test_database: None) -> None:
+def test_create_protocols(client: TestClient) -> None:
     response = client.post('/protocols', json={'name': 'asgi'})
     assert response.status_code == 200
     assert response.headers['content-type'] == 'application/json'
     assert response.json() == {'name': 'asgi'}
 
 
-def test_protocols(client: TestClient, create_test_database: None) -> None:
+def test_protocols(client: TestClient) -> None:
     client.post('/protocols', json={'name': 'asgi'})
     client.post('/protocols', json={'name': 'wsgi'})
     response = client.get('/protocols')
