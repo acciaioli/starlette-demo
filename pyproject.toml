@@ -16,14 +16,15 @@ databases = "^0.2.2"    # db async integration
 aiosqlite = "^0.10.0"   # databases dependency (sqlite)
 
 [tool.poetry.dev-dependencies]
-mypy = "^0.701.0"               # type checks
+black = {version = "^18.3-alpha.0",allows-prereleases = true}   # code formatter
+isort = "^4.3"                  # sort/style imports
 flake8 = "^3.7"                 # style checks
+mypy = "^0.701.0"               # type checks
 xenon = "^0.5.5"                # cyclomatic complexity checks
-requests = "^2.21"              # starlette.testclient.TestClient
-ipdb = "^0.12.0"                # debugger
 pytest-cov = "^2.7"             # test runner
-sqlalchemy_utils = "^0.33.11"   # used for test utils
-black = {version = "^18.3-alpha.0",allows-prereleases = true}
+ipdb = "^0.12.0"                # debugger
+requests = "^2.21"              # starlette.testclient.TestClient
+sqlalchemy_utils = "^0.33.11"
 
 [tool.black]
 line-length = 119
