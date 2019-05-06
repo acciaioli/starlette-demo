@@ -44,6 +44,13 @@ $ poetry install
 $ ln -s .env.dev .env
 ```
 
+### Code Formatting
+```bash
+$ balck app tests
+
+$ black app tests --check # this one is for CI
+``` 
+
 ### Lint Checks
 
 ```bash

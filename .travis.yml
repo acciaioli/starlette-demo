@@ -12,6 +12,7 @@ install:
     - poetry install
 
 script:
+    - poetry run black app tests --check
     - poetry run flake8 app tests
     - poetry run mypy app tests
     - poetry run xenon app -b A
