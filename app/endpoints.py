@@ -1,6 +1,7 @@
-from typing import List
+import typing
 
 from starlette.background import BackgroundTasks
+from starlette.endpoints import WebSocketEndpoint
 from starlette.requests import Request
 from starlette.responses import JSONResponse, RedirectResponse
 from starlette.types import Receive, Scope, Send
@@ -32,8 +33,15 @@ class Ws:
         await websocket.close()
 
 
+class EchoWs(WebSocketEndpoint):
+    encoding = "text"
+
+    async def on_receive(self, websocket: WebSocket, data: typing.Any) -> None:
+        await websocket.send_text(f"echo: {data}")
+
+
 async def tasks(request: Request) -> JSONResponse:
-    data: List[str] = await request.json()
+    data: typing.List[str] = await request.json()
     b_tasks = BackgroundTasks()
     for key in data:
         b_tasks.add_task(do, param=key)
@@ -55,3 +63,7 @@ async def create_protocol(request: Request) -> JSONResponse:
     await database.execute(query)
 
     return JSONResponse({"name": data["name"]})
+
+
+async def favicon(request: Request) -> RedirectResponse:
+    return RedirectResponse("/static/favicon.ico")

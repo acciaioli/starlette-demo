@@ -33,6 +33,16 @@ def test_ws(client: TestClient) -> None:
         assert data == {"goodbye": "asgi"}
 
 
+def test_echo(client: TestClient) -> None:
+    with client.websocket_connect("/echo") as websocket:
+        websocket.send_text("goodbye")
+        data = websocket.receive_text()
+        assert data == "echo: goodbye"
+        websocket.send_text("wsgi")
+        data = websocket.receive_text()
+        assert data == "echo: wsgi"
+
+
 def test_404_handler(client: TestClient) -> None:
     response = client.get("/not_found")
     assert response.status_code == 404
@@ -44,7 +54,14 @@ def test_static(client: TestClient) -> None:
     response = client.get("/static/asgi.html")
     assert response.status_code == 200
     assert response.headers["content-type"] == "text/html; charset=utf-8"
-    assert response.content == b'<a href="https://asgi.readthedocs.io/en/latest/">ASGI docs</a>\n'
+    assert response.content == b"<div>hello html</div>\n"
+
+
+def test_favicon(client: TestClient) -> None:
+    response = client.get("/favicon.ico")
+    assert_redirected(response)
+    assert response.status_code == 200
+    assert "image/vnd.microsoft.icon" in response.headers["content-type"]
 
 
 @patch("app.endpoints.do")
