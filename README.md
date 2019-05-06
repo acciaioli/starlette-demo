@@ -46,6 +46,7 @@ $ ln -s .env.dev .env
 ```
 
 ### Code Formatting
+
 ```bash
 $ balck app tests
 All done! ✨ 🍰 ✨
@@ -53,6 +54,13 @@ All done! ✨ 🍰 ✨
 
 $ black app tests --check # this one is for CI
 ``` 
+
+### Import Sorting
+```bash
+$ isort -rc app tests
+
+$ isort -rc app tests --check-only # this one is for CI
+```
 
 ### Lint Checks
 

@@ -3,16 +3,16 @@ from typing import Generator
 import pytest
 from alembic import command
 from alembic.config import Config
-from starlette.config import environ
-from starlette.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.engine.base import Connection
-from sqlalchemy_utils import database_exists, create_database, drop_database
+from sqlalchemy_utils import create_database, database_exists, drop_database
+from starlette.config import environ
+from starlette.testclient import TestClient
 
 environ["TESTING"] = "True"
 
-from app.db import db_url, metadata  # noqa: E402
-from app import app  # noqa: E402
+from app.db import db_url, metadata  # noqa: E402 # isort:skip
+from app import app  # noqa: E402 # isort:skip
 
 
 @pytest.fixture(scope="session", autouse=True)
