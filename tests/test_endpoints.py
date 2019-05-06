@@ -30,10 +30,7 @@ def test_static(client: TestClient) -> None:
     response = client.get("/static/asgi.html")
     assert response.status_code == 200
     assert response.headers["content-type"] == "text/html; charset=utf-8"
-    assert (
-        response.content
-        == b'<a href="https://asgi.readthedocs.io/en/latest/">ASGI docs</a>\n'
-    )
+    assert response.content == b'<a href="https://asgi.readthedocs.io/en/latest/">ASGI docs</a>\n'
 
 
 @patch("app.endpoints.do")

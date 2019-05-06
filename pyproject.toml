@@ -15,7 +15,6 @@ alembic = "^1.0"        # sqlalchemy migrations
 databases = "^0.2.2"    # db async integration
 aiosqlite = "^0.10.0"   # databases dependency (sqlite)
 
-
 [tool.poetry.dev-dependencies]
 mypy = "^0.701.0"               # type checks
 flake8 = "^3.7"                 # style checks
@@ -25,6 +24,10 @@ ipdb = "^0.12.0"                # debugger
 pytest-cov = "^2.7"             # test runner
 sqlalchemy_utils = "^0.33.11"   # used for test utils
 black = {version = "^18.3-alpha.0",allows-prereleases = true}
+
+[tool.black]
+line-length = 119
+target-version = ['py37']
 
 [build-system]
 requires = ["poetry>=0.12"]

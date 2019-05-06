@@ -48,6 +48,8 @@ $ ln -s .env.dev .env
 ### Code Formatting
 ```bash
 $ balck app tests
+All done! ✨ 🍰 ✨
+13 files left unchanged.
 
 $ black app tests --check # this one is for CI
 ``` 
