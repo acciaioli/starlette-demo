@@ -2,7 +2,6 @@ import sqlalchemy
 
 from .db import metadata
 
-
 protocols = sqlalchemy.Table(
     "protocols",
     metadata,

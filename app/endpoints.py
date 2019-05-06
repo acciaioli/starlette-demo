@@ -1,14 +1,14 @@
 from typing import List
 
-from starlette.types import Scope, Receive, Send
+from starlette.background import BackgroundTasks
 from starlette.requests import Request
 from starlette.responses import JSONResponse
+from starlette.types import Receive, Scope, Send
 from starlette.websockets import WebSocket
-from starlette.background import BackgroundTasks
 
-from .tasks import do
 from .db import database
 from .models import protocols
+from .tasks import do
 
 
 async def api(request: Request) -> JSONResponse:

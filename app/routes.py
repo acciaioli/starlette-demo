@@ -1,10 +1,9 @@
 from typing import List
 
-from starlette.routing import Route, WebSocketRoute, Mount
+from starlette.routing import Mount, Route, WebSocketRoute
 
-from .endpoints import api, Ws, tasks, list_protocols, create_protocol
+from .endpoints import Ws, api, create_protocol, list_protocols, tasks
 from .static import static
-
 
 routes: List[Route] = [
     Route("/api", endpoint=api, methods=["GET"], name="api"),

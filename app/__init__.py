@@ -1,9 +1,9 @@
 from starlette.applications import Starlette
 
 from .config import DEBUG
-from .routes import routes
+from .db import shutdown_db, startup_db
 from .exception_handlers import not_found
-from .db import startup_db, shutdown_db
+from .routes import routes
 
 app: Starlette = Starlette(debug=DEBUG, routes=routes)
 
