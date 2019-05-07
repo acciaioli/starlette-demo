@@ -4,7 +4,7 @@
         <title>Echo</title>
     </head>
     <body>
-        <h1>WebSocket Chat</h1>
+        <h1>WebSocket Echo</h1>
         <form action="" onsubmit="sendMessage(event)">
             <input type="text" id="messageText" autocomplete="off"/>
             <button>Send</button>
@@ -15,7 +15,7 @@
             <button>Close WebSocket</button>
         </form>
         <script>
-            var ws = new WebSocket("ws://localhost:8000/echo");
+            var ws = new WebSocket("ws://" + window.location.host + "/echo");
             ws.onmessage = function(event) {
                 var messages = document.getElementById('messages')
                 var message = document.createElement('li')
