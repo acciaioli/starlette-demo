@@ -19,6 +19,7 @@ It features:
 - `poetry` [dependency manager](https://github.com/sdispater/poetry)
 - `databases` [async db support](https://github.com/encode/databases)
 - `sqlalchemy` [sql toolkit](https://github.com/sqlalchemy/sqlalchemy)
+- `alembic` [database migrations](https://github.com/sqlalchemy/alembic)
 - `black` [code formatter](https://github.com/python/black)
 - `flake8` [style checker](https://github.com/PyCQA/flake8)
 - `mypy` [static type checker](https://github.com/python/mypy)
@@ -143,6 +144,22 @@ Required test coverage of 100% reached. Total coverage: 100.00%
 # for detailed coverage report
 $ coverage html
 $ firefox htmlcov/index.html
+
+```
+
+### Run DB migrations
+
+```bash
+$ alembic upgrate head
+...
+INFO  [alembic.runtime.migration] Running upgrade  -> 8a4192a2406a, create protocols table
+INFO  [alembic.runtime.migration] Running upgrade 8a4192a2406a -> 1a9952031305, update protocols table: is_cool col
+...
+
+$ alembic revision --autogenerate -m "update protocols table: add example col"
+...
+INFO  [alembic.autogenerate.compare] Detected added column 'protocols.example'
+...
 
 ```
 
