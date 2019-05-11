@@ -21,6 +21,8 @@ path.append("")
 from app.db import db_url, metadata
 config.set_main_option('sqlalchemy.url', db_url)
 target_metadata = metadata
+render_as_batch = db_url[0:7] == "sqlite:"
+
 
 
 def run_migrations_offline():
@@ -37,7 +39,7 @@ def run_migrations_offline():
     """
     url = config.get_main_option("sqlalchemy.url")
     context.configure(
-        url=url, target_metadata=target_metadata, literal_binds=True
+        url=url, target_metadata=target_metadata, literal_binds=True, render_as_batch=render_as_batch
     )
 
     with context.begin_transaction():
@@ -59,7 +61,7 @@ def run_migrations_online():
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata
+            connection=connection, target_metadata=target_metadata, render_as_batch=render_as_batch
         )
 
         with context.begin_transaction():

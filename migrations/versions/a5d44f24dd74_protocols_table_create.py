@@ -1,8 +1,8 @@
-"""create protocols table
+"""protocols table: create
 
-Revision ID: 8a4192a2406a
+Revision ID: a5d44f24dd74
 Revises: 
-Create Date: 2019-05-11 16:44:37.977526
+Create Date: 2019-05-12 01:16:31.688616
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8a4192a2406a'
+revision = 'a5d44f24dd74'
 down_revision = None
 branch_labels = None
 depends_on = None
