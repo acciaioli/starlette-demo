@@ -1,8 +1,8 @@
 #!/bin/bash
 
 export PREFIX=""
-if [ -d 'venv' ] ; then
-    export PREFIX="venv/bin/"
+if [ -d '.venv' ] ; then
+    export PREFIX=".venv/bin/"
 fi
 
 ${PREFIX}isort -rc app tests --check-only

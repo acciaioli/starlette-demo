@@ -84,16 +84,16 @@ def test_list_protocols(client: TestClient) -> None:
 
 
 def test_create_protocols(client: TestClient) -> None:
-    response = client.post("/protocols", json={"name": "asgi"})
+    response = client.post("/protocols", json={"name": "wsgi"})
     assert response.status_code == 200
     assert response.headers["content-type"] == "application/json"
-    assert response.json() == {"name": "asgi"}
+    assert response.json() == {"name": "wsgi", "is_cool": False}
 
 
 def test_protocols(client: TestClient) -> None:
-    client.post("/protocols", json={"name": "asgi"})
-    client.post("/protocols", json={"name": "wsgi"})
+    client.post("/protocols", json={"name": "asgi", "is_cool": True})
+    client.post("/protocols", json={"name": "wsgi", "is_cool": False})
     response = client.get("/protocols")
     assert response.status_code == 200
     assert response.headers["content-type"] == "application/json"
-    assert response.json() == [{"id": 1, "name": "asgi"}, {"id": 2, "name": "wsgi"}]
+    assert response.json() == [{"id": 1, "name": "asgi", "is_cool": True}, {"id": 2, "name": "wsgi", "is_cool": False}]

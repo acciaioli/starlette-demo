@@ -52,17 +52,17 @@ async def tasks(request: Request) -> JSONResponse:
 async def list_protocols(request: Request) -> JSONResponse:
     query = protocols.select()
     results = await database.fetch_all(query)
-    content = [{"id": result["id"], "name": result["name"]} for result in results]
+    content = [{"id": result["id"], "name": result["name"], "is_cool": result["is_cool"]} for result in results]
 
     return JSONResponse(content)
 
 
 async def create_protocol(request: Request) -> JSONResponse:
     data = await request.json()
-    query = protocols.insert().values(name=data["name"])
+    query = protocols.insert().values(name=data["name"], is_cool=data.get("is_cool", False))
     await database.execute(query)
 
-    return JSONResponse({"name": data["name"]})
+    return JSONResponse({"name": data["name"], "is_cool": data.get("is_cool", False)})
 
 
 async def favicon(request: Request) -> RedirectResponse:
