@@ -49,16 +49,14 @@ $ poetry config settings.virtualenvs.in-project true
 
 $ poetry config --list                               
 settings.virtualenvs.create = false
-settings.virtualenvs.in-project = false
-settings.virtualenvs.path = "/home/<user>/.cache/pypoetry/virtualenvs"
-repositories = {}
+settings.virtualenvs.in-project = true
 ```
 
 ### Install Dependencies
 
 ```bash
 # create venv
-$ python3.7 -m venv venv
+$ python3.7 -m venv .venv
 $ source venv/bin/activate
 
 # install project dependencies
