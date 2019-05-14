@@ -30,7 +30,7 @@ PROD_LOGGERS = {
 }
 
 
-def configure_logging(env: str) -> None:
+async def configure_logging(env: str) -> None:
     handlers, loggers = {
         "dev": (DEV_HANDLERS, DEV_LOGGERS),
         "test": (PROD_HANDLERS, PROD_LOGGERS),

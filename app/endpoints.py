@@ -72,3 +72,9 @@ async def favicon(request: Request) -> RedirectResponse:
 async def log(request: Request) -> JSONResponse:
     await log_something()
     return JSONResponse(status_code=204)
+
+
+async def protected(request: Request) -> JSONResponse:
+    if not request.user.is_authenticated:
+        return JSONResponse({"detail": "unauthorized"}, status_code=401)
+    return JSONResponse({"hello": request.user.username})
