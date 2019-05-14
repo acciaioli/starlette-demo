@@ -9,7 +9,7 @@ from starlette.websockets import WebSocket
 
 from .db import database
 from .models import protocols
-from .tasks import do
+from .tasks import do, log_something
 
 
 async def root(request: Request) -> RedirectResponse:
@@ -67,3 +67,8 @@ async def create_protocol(request: Request) -> JSONResponse:
 
 async def favicon(request: Request) -> RedirectResponse:
     return RedirectResponse("/static/favicon.ico")
+
+
+async def log(request: Request) -> JSONResponse:
+    await log_something()
+    return JSONResponse(status_code=204)
