@@ -2,7 +2,7 @@ from typing import List
 
 from starlette.routing import Mount, Route, WebSocketRoute
 
-from .endpoints import EchoWs, Ws, api, create_protocol, favicon, list_protocols, log, root, tasks
+from .endpoints import EchoWs, Ws, api, create_protocol, favicon, list_protocols, log, protected, root, tasks
 from .static import static
 
 routes: List[Route] = [
@@ -16,4 +16,5 @@ routes: List[Route] = [
     Route("/protocols", endpoint=list_protocols, methods=["GET"], name="list_protocols"),
     Route("/protocols", endpoint=create_protocol, methods=["POST"], name="create_protocol"),
     Route("/log", endpoint=log, methods=["GET"], name="log"),
+    Route("/protected", endpoint=protected, methods=["GET"], name="protected"),
 ]
