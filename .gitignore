@@ -12,9 +12,12 @@ htmlcov/
 coverage.xml
 *.cover
 
-# Environments
-.env
+# virtualenv
 venv/
+.venv/
+
+# env
+.env
 
 # IDEs
 .idea
@@ -23,3 +26,11 @@ venv/
 
 # mypy
 .mypy_cache/
+
+# logs
+app.log
+debug.log
+
+# db
+app.db
+test_app.db

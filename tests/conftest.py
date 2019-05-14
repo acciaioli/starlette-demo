@@ -1,3 +1,4 @@
+import os
 from typing import Generator
 
 import pytest
@@ -9,20 +10,22 @@ from sqlalchemy_utils import create_database, database_exists, drop_database
 from starlette.config import environ
 from starlette.testclient import TestClient
 
-environ["TESTING"] = "True"
+environ["ENVFILE"] = ".env.test"
 
 from app.db import db_url  # noqa: E402 # isort:skip
 from app import app  # noqa: E402 # isort:skip
 
 
 @pytest.fixture(scope="session", autouse=True)
-def setup_db() -> Generator[None, None, None]:
+def setup() -> Generator[None, None, None]:
     assert not database_exists(db_url), "Test database already exists. Aborting tests."
     create_database(db_url)  # Create the test database.
     config = Config("alembic.ini")  # Run the migrations.
     command.upgrade(config, "head")
     yield
     drop_database(db_url)  # Drop the test database.
+    if os.path.isfile("app.log"):
+        os.remove("app.log")
 
 
 @pytest.fixture()

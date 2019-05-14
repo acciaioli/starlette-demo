@@ -1,16 +1,17 @@
 import databases
 import sqlalchemy
 
-from .config import DATABASE_URL, TEST_DATABASE_URL, TESTING
+from .config import DATABASE_URL, ENV
 
 metadata = sqlalchemy.MetaData()
+force_rollback = False
 
-if TESTING:
-    db_url = str(TEST_DATABASE_URL)
-    database = databases.Database(TEST_DATABASE_URL, force_rollback=True)
-else:
-    db_url = str(DATABASE_URL)  # pragma: no cover
-    database = databases.Database(DATABASE_URL)  # pragma: no cover
+if ENV == "test":
+    DATABASE_URL = DATABASE_URL.replace(database="test_" + DATABASE_URL.database)
+    force_rollback = True
+
+db_url = str(DATABASE_URL)
+database = databases.Database(db_url, force_rollback=force_rollback)
 
 
 async def startup_db() -> None:
