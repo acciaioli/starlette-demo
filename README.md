@@ -1,8 +1,8 @@
 # backend
 
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/)
-[![Build Status](https://travis-ci.com/Spin14/wolf-backend.svg?branch=master)](https://travis-ci.com/Spin14/wolf-backend)
-[![codecov](https://codecov.io/gh/Spin14/wolf-backend/branch/master/graph/badge.svg)](https://codecov.io/gh/Spin14/wolf-backend)
+[![Build Status](https://travis-ci.com/Spin14/starlette-demo.svg?branch=master)](https://travis-ci.com/Spin14/starlette-demo)
+[![codecov](https://codecov.io/gh/Spin14/starlette-demo/branch/master/graph/badge.svg)](https://codecov.io/gh/Spin14/starlette-demo)
 [![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 
 ## Intro
